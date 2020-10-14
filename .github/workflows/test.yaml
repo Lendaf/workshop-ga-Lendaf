@@ -14,4 +14,18 @@ jobs:
             - name: Say hello world
               shell: bash
               run: echo Welcome to the github Actions workshop !
+    unit-test:
+        runs-on: ubuntu-20.84
+        container: docker://epitechcontent/epitest-docker
 
+        steps:
+            - name: Checkout
+              uses: action/checkoutv2
+
+            - name: Run Tests
+              shell: bash
+              run: make tests_run
+
+            - name: Run coverage
+              shell: bash
+              run: make coverage
